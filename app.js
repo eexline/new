@@ -832,7 +832,35 @@
 
   els.getSignalBtn.addEventListener("click", showSignal);
 
+  // Telegram WebApp initialization
+  function initTelegramWebApp() {
+    if (window.Telegram && window.Telegram.WebApp) {
+      const tg = window.Telegram.WebApp;
+      
+      // Уведомляем Telegram о готовности приложения
+      tg.ready();
+      
+      // Растягиваем окно на всю доступную высоту
+      tg.expand();
+      
+      // Запрашиваем полноэкранный режим
+      tg.requestFullscreen();
+      
+      // Дополнительные настройки для лучшего отображения
+      tg.enableClosingConfirmation();
+      
+      // Устанавливаем отступ для safe area (iPhone notch/Dynamic Island) + дополнительно 20px
+      const header = document.querySelector('.header');
+      if (header && tg.safeAreaInsets) {
+        const topInset = tg.safeAreaInsets.top || 0;
+        const additionalPadding = 20;
+        header.style.paddingTop = `${topInset + additionalPadding}px`;
+      }
+    }
+  }
+
   // Init
+  initTelegramWebApp();
   setLang(state.lang);
   setMarket(state.market);
   syncPairUI();
