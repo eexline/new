@@ -982,22 +982,26 @@ body{
     background:linear-gradient(180deg, rgba(18,18,26,.98), rgba(10,10,14,.95));
   }
   .modal__list{
-    padding:8px;
-    gap:10px;
-    display:grid;
-    grid-template-columns:1fr;
-    grid-auto-rows:auto;
+    padding:10px;
+    gap:12px;
+    display:flex;
+    flex-direction:column;
   }
   .option{
-    padding:12px 14px;
+    padding:14px 16px;
     gap:10px;
     margin-bottom:0;
     position:relative;
     z-index:auto;
-    transform:none;
+    transform:none !important;
+    overflow:visible;
+    min-height:56px;
   }
   .option:hover{
-    transform:none;
+    transform:none !important;
+  }
+  .option::before{
+    display:none;
   }
   .option__title{
     font-size:14px;
@@ -1099,7 +1103,8 @@ body{
   padding:12px;
   overflow-y:auto;
   overflow-x:hidden;
-  display:grid;
+  display:flex;
+  flex-direction:column;
   gap:10px;
   scrollbar-width:thin;
   scrollbar-color:rgba(255,214,90,.2) transparent;
@@ -1134,7 +1139,7 @@ body{
   cursor:pointer;
   transition:all .25s cubic-bezier(0.4, 0, 0.2, 1);
   position:relative;
-  overflow:hidden;
+  overflow:visible;
   opacity:1;
   transform:translateY(0);
   color:var(--text);
@@ -1142,6 +1147,7 @@ body{
   flex-shrink:0;
   margin-bottom:0;
   isolation:isolate;
+  will-change:transform;
 }
 .option__flags{
   display:flex;
