@@ -983,11 +983,21 @@ body{
   }
   .modal__list{
     padding:8px;
-    gap:8px;
+    gap:10px;
+    display:grid;
+    grid-template-columns:1fr;
+    grid-auto-rows:auto;
   }
   .option{
     padding:12px 14px;
     gap:10px;
+    margin-bottom:0;
+    position:relative;
+    z-index:auto;
+    transform:none;
+  }
+  .option:hover{
+    transform:none;
   }
   .option__title{
     font-size:14px;
@@ -1130,6 +1140,8 @@ body{
   color:var(--text);
   min-width:0;
   flex-shrink:0;
+  margin-bottom:0;
+  isolation:isolate;
 }
 .option__flags{
   display:flex;
